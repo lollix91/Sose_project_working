@@ -1,0 +1,86 @@
+package it.univaq.disim.sose.conferencemanager.manager.webservices;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import it.univaq.disim.sose.conferencemanager.clients.PreviewPT;
+import it.univaq.disim.sose.conferencemanager.clients.PreviewRequest;
+import it.univaq.disim.sose.conferencemanager.clients.PreviewResponse;
+import it.univaq.disim.sose.conferencemanager.clients.PreviewService;
+import it.univaq.disim.sose.conferencemanager.manager.CalendarEventRecord;
+import it.univaq.disim.sose.conferencemanager.manager.ConferenceType;
+import it.univaq.disim.sose.conferencemanager.manager.ManagerPoiRequestByLocation;
+import it.univaq.disim.sose.conferencemanager.manager.ManagerPoiResponseByLocation;
+import it.univaq.disim.sose.conferencemanager.manager.ManagerRequest;
+import it.univaq.disim.sose.conferencemanager.manager.ManagerPT;
+import it.univaq.disim.sose.conferencemanager.manager.ManagerRequestByDate;
+import it.univaq.disim.sose.conferencemanager.manager.ManagerRequestById;
+import it.univaq.disim.sose.conferencemanager.manager.ManagerRequestListByDate;
+import it.univaq.disim.sose.conferencemanager.manager.ManagerResponse;
+import it.univaq.disim.sose.conferencemanager.manager.ManagerResponseByDate;
+import it.univaq.disim.sose.conferencemanager.manager.ManagerResponseById;
+import it.univaq.disim.sose.conferencemanager.manager.ManagerResponseListByDate;
+
+import it.univaq.disim.sose.conferencemanager.manager.ObjectFactory;
+import it.univaq.disim.sose.conferencemanager.manager.PoisRecord;
+import it.univaq.disim.sose.conferencemanager.manager.business.ManagerService;
+import it.univaq.disim.sose.conferencemanager.manager.business.model.Conference;
+
+
+@Component(value = "ManagerPTImpl")
+public class ManagerPTImpl implements ManagerPT {
+
+	private static Logger LOGGER = LoggerFactory.getLogger(ManagerPTImpl.class);
+	
+	@Autowired
+	private ManagerService service;
+		
+
+	@Override
+	public ManagerResponseListByDate managerConferenceListRequestByDate(ManagerRequestListByDate parameters) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ManagerResponseByDate managerConferenceRequestByDate(ManagerRequestByDate parameters) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ManagerResponseById managerConferenceRequestById(ManagerRequestById parameters) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ManagerPoiResponseByLocation managerPoiRequestByLocation(ManagerPoiRequestByLocation parameters) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ManagerResponse getPreviewById(ManagerRequest reqparam) {
+		// TODO Auto-generated method stub
+		
+		PreviewService ps = new PreviewService();
+		PreviewPT pt = ps.getPreviewPort();
+		PreviewRequest request = new PreviewRequest();
+		request.setIdConference(reqparam.getIdRequest());
+		
+		PreviewResponse response = pt.previewConferenceRequest(request);
+		
+		ManagerResponse man=new ManagerResponse();
+		Conference conf=new Conference();
+		conf.setName(response.getName());
+		
+		
+		
+		man.setConferenceName(conf.getName());
+		
+		return man;
+	}
+}
