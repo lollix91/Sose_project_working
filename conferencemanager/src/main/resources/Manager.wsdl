@@ -28,11 +28,20 @@
 		<xsd:complexType name="managerRequest">
 		    <xsd:sequence>  
 		        <xsd:element name="idRequest" type="xsd:string"/>
+		       
 		    </xsd:sequence>
 	    </xsd:complexType>
 		  <xsd:complexType name="managerResponse">
 				<xsd:sequence maxOccurs="1" minOccurs="1">
-				<xsd:element name="conferenceName" type="xsd:string" maxOccurs="1" minOccurs="1"/>
+				<xsd:element name="conferenceID" type="xsd:string" maxOccurs="1" minOccurs="1"/>
+				 <xsd:element name="name" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+					<xsd:element name="abstract" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+					<xsd:element name="urlImage" minOccurs="1" maxOccurs="1" type="xsd:anyURI"/>
+			    	<xsd:element name="urlPDFs" minOccurs="1" maxOccurs="1" type="xsd:base64Binary"/>
+			    	<xsd:element name="city" minOccurs="1" maxOccurs="1" type="xsd:string"/>
+			    	<xsd:element name="date" minOccurs="1" maxOccurs="1" type="xsd:date"/>
+			    	<xsd:element name="latitude" minOccurs="1" maxOccurs="1" type="xsd:double"/>
+			    	<xsd:element name="longitude" minOccurs="1" maxOccurs="1" type="xsd:double"/>
 				
 				</xsd:sequence>
 				
@@ -76,7 +85,7 @@
 		
 		<xsd:complexType name="managerPoiRequestByLocation">
 		    <xsd:sequence>  
-		        <xsd:element name="locationEvent" type="xsd:string"/>
+		        <xsd:element name="eventLocation" type="xsd:string"/>		       
 		    </xsd:sequence>
 	    </xsd:complexType>
         

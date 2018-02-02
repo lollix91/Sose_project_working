@@ -1,5 +1,8 @@
 package it.univaq.disim.sose.conferencemanager.manager.webservices;
 
+
+
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +50,8 @@ public class ManagerPTImpl implements ManagerPT {
 	@Override
 	public ManagerResponseByDate managerConferenceRequestByDate(ManagerRequestByDate parameters) {
 		// TODO Auto-generated method stub
+		
+		//chiamata al calendario
 		return null;
 	}
 
@@ -59,6 +64,20 @@ public class ManagerPTImpl implements ManagerPT {
 	@Override
 	public ManagerPoiResponseByLocation managerPoiRequestByLocation(ManagerPoiRequestByLocation parameters) {
 		// TODO Auto-generated method stub
+		
+	
+		
+		String conference=parameters.getEventLocation();
+		
+		try {
+			JSONObject js=service.getJsonPois(conference);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		//maps
 		return null;
 	}
 
@@ -66,21 +85,10 @@ public class ManagerPTImpl implements ManagerPT {
 	public ManagerResponse getPreviewById(ManagerRequest reqparam) {
 		// TODO Auto-generated method stub
 		
-		PreviewService ps = new PreviewService();
-		PreviewPT pt = ps.getPreviewPort();
-		PreviewRequest request = new PreviewRequest();
-		request.setIdConference(reqparam.getIdRequest());
-		
-		PreviewResponse response = pt.previewConferenceRequest(request);
-		
-		ManagerResponse man=new ManagerResponse();
-		Conference conf=new Conference();
-		conf.setName(response.getName());
-		
-		
-		
-		man.setConferenceName(conf.getName());
-		
+		ManagerResponse man=service.getInfo(reqparam);
+	
 		return man;
 	}
+	
+	
 }

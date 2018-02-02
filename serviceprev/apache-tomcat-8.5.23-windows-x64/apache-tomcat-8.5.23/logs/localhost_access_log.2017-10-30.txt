@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [30/Oct/2017:12:32:12 +0100] "GET /addnumbersagain/addnumbers?wsdl HTTP/1.1" 404 1096
+0:0:0:0:0:0:0:1 - - [30/Oct/2017:12:32:14 +0100] "GET /favicon.ico HTTP/1.1" 200 21630
+127.0.0.1 - - [30/Oct/2017:12:34:45 +0100] "GET /addnumbersagain/addnumbers?wsdl HTTP/1.1" 404 1096
+0:0:0:0:0:0:0:1 - - [30/Oct/2017:12:39:25 +0100] "GET /addnumbersagain/addnumbers?wsdl HTTP/1.1" 404 1096
+0:0:0:0:0:0:0:1 - - [30/Oct/2017:12:40:05 +0100] "GET /addnumbersagain/ HTTP/1.1" 404 1086
+0:0:0:0:0:0:0:1 - - [30/Oct/2017:12:40:54 +0100] "GET /addnumbersagain/addnumbers?wsdl HTTP/1.1" 404 1096
