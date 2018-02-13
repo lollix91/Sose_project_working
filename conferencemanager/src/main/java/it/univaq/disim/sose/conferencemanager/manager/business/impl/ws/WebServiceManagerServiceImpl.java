@@ -39,16 +39,20 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		
 		PreviewResponse response = pt.previewConferenceRequest(request);
 		
-		ManagerResponse man=new ManagerResponse();
-		Conference conf=new Conference();
+		
+		/*Conference conf=new Conference();
 		conf.setName(response.getName());
 		conf.setLongitude(response.getLongitude());
 		conf.setLatitude(response.getLatitude());
 		conf.setCity(response.getCity());
-		
-		
-		man.setConferenceID(conf.getConferenceId());
-		
+		*/
+
+		ManagerResponse man=new ManagerResponse();
+		man.setConferenceID(reqparam.getIdRequest());
+		man.setName(response.getName());
+		man.setLongitude(response.getLongitude());
+		man.setLatitude(response.getLatitude());
+		man.setCity(response.getCity());
 		
 		
 		return man;
