@@ -59,7 +59,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public JSONObject getJsonPois(String conference) throws Exception {
+	public JSONObject getJsonPois(ManagerRequest req) throws Exception {
 		// TODO Auto-generated method stub
 		/*
 		String url="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyB8YmmJamci1OdCC15vzqB2JRSS8zqIzeo";
@@ -68,7 +68,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		PreviewService ps = new PreviewService();
 		PreviewPT pt = ps.getPreviewPort();
 		PreviewRequest request = new PreviewRequest();
-		request.setIdConference(conference);
+		request.setIdConference(req.getIdRequest());
 		
 		
 		
@@ -118,6 +118,8 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		
 		return json;
 	}
+
+
 
 
 	

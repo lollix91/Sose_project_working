@@ -8,6 +8,5 @@ import org.json.JSONObject;
 public interface ManagerService {
 
 	  ManagerResponse getInfo(ManagerRequest req);
-	  JSONObject getJsonPois(String idconference) throws Exception;
-	
+	  JSONObject getJsonPois(ManagerRequest req) throws Exception;
 }

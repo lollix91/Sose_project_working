@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import it.univaq.disim.sose.conferencemanager.manager.business.ManagerService;
@@ -61,7 +62,6 @@ public class ClientInterface extends HttpServlet {
 			
 			ManagerRequest reqparam = new ManagerRequest();
 			reqparam.setIdRequest(idConference);
-			System.out.println("Parameter " + idConference);
 
 			WebServiceManagerServiceImpl wm = new WebServiceManagerServiceImpl();
 			
@@ -80,8 +80,31 @@ public class ClientInterface extends HttpServlet {
 			WebServiceManagerServiceImpl wm = new WebServiceManagerServiceImpl();
 			
 			//ManagerPTImpl mm = new ManagerPTImpl();
-			ManagerResponse man=wm.getInfo(reqparam);
-			out.write("Parameter " + man.getName());
+			//ManagerResponse man=wm.getInfo(reqparam);
+			//out.write("Parameter " + man.getName());
+			
+
+			
+		}
+		else if(whatValue.equals("poi")) {
+			
+			String idConference = req.getParameter("id");
+			
+			ManagerRequest reqparam = new ManagerRequest();
+			reqparam.setIdRequest(idConference);
+
+			WebServiceManagerServiceImpl wm = new WebServiceManagerServiceImpl();
+			
+			//ManagerPTImpl mm = new ManagerPTImpl();
+			JSONObject man;
+			try {
+				
+				man = wm.getJsonPois(reqparam);
+				out.write(man.toString());
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+			}
 			
 
 			
