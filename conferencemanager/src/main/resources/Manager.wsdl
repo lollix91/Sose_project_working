@@ -67,7 +67,7 @@
         
 	    <xsd:complexType name="managerResponseByDate">      
 			<xsd:sequence minOccurs="1" maxOccurs="1">
-				<xsd:element name="calendarEventRecord" minOccurs="1" maxOccurs="1" type="tns:calendarEventRecord"/>
+				<xsd:element name="calendarEventRecord" minOccurs="1" maxOccurs="1" type="tns:ConferenceType"/>
 			</xsd:sequence>
 	    </xsd:complexType>
 		

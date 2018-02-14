@@ -32,6 +32,7 @@ import it.univaq.disim.sose.conferencemanager.manager.business.ManagerService;
 import it.univaq.disim.sose.conferencemanager.manager.business.model.Conference;
 
 
+
 @Component(value = "ManagerPTImpl")
 public class ManagerPTImpl implements ManagerPT {
 
@@ -51,8 +52,33 @@ public class ManagerPTImpl implements ManagerPT {
 	public ManagerResponseByDate managerConferenceRequestByDate(ManagerRequestByDate parameters) {
 		// TODO Auto-generated method stub
 		
-		//chiamata al calendario
-		return null;
+		LOGGER.info("CALLED MANAGERBYDATE");
+		
+		ManagerResponseByDate response = new ManagerResponseByDate();
+		ConferenceType conference = new ConferenceType();
+		
+		try {
+			 PreviewResponse rp = service.getConferenceByDate(parameters.getDateConference());
+			
+			 conference.setCity(rp.getCity());
+			 conference.setAbstract(rp.getAbstract());
+			 conference.setDate(rp.getDate());
+			 conference.setLatitude(rp.getLatitude());
+			 conference.setLongitude(rp.getLongitude());
+			 conference.setName(rp.getName());
+			 conference.setUrlImage(rp.getUrlImage());
+			 conference.setUrlPDFs(rp.getUrlPDFs());
+			 
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		response.setCalendarEventRecord(conference);
+		
+		return response;
 	}
 
 	@Override
@@ -66,11 +92,8 @@ public class ManagerPTImpl implements ManagerPT {
 		// TODO Auto-generated method stub
 		
 	
-		
-		String conference=parameters.getEventLocation();
-		
 		try {
-			
+			String conference=parameters.getEventLocation();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

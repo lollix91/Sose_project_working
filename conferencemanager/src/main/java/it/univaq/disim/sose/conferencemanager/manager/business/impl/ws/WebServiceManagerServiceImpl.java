@@ -6,6 +6,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.google.api.client.util.DateTime;
+import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.model.Events;
+
 import it.univaq.disim.sose.conferencemanager.manager.ManagerRequest;
 import it.univaq.disim.sose.conferencemanager.manager.ManagerResponse;
 import it.univaq.disim.sose.conferencemanager.manager.business.ManagerService;
@@ -18,6 +22,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class WebServiceManagerServiceImpl implements ManagerService {
@@ -117,6 +125,62 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		System.out.println(json);
 		
 		return json;
+	}
+
+	@Override
+	public PreviewResponse getConferenceByDate(String date) throws Exception {
+		// TODO Auto-generated method stub
+		
+		
+		
+		PreviewService ps = new PreviewService();
+		PreviewPT pt = ps.getPreviewPort();
+		PreviewRequest request = new PreviewRequest();
+		PreviewResponse response = new PreviewResponse();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    Date convertedCurrentDate = sdf.parse(date);
+		
+		
+		//chiamata a calendario
+        // Build a new authorized API client service.
+        // Note: Do not confuse this class with the
+        //   com.google.api.services.calendar.model.Calendar class.
+        com.google.api.services.calendar.Calendar service =
+            Calendar.getCalendarService();
+
+        // List the next 10 events from the primary calendar.
+        DateTime now = new DateTime(convertedCurrentDate);
+        
+        Events events = service.events().list("primary")
+            .setMaxResults(1)
+            .setTimeMin(now)
+            .setOrderBy("startTime")
+            .setSingleEvents(true)
+            .execute();
+        
+        
+        List<Event> items = events.getItems();
+        if (items.size() == 0) {
+            System.out.println("No upcoming events found.");
+        } else {
+            System.out.println("Upcoming events");
+            for (Event event : items) {
+                DateTime start = event.getStart().getDateTime();
+                if (start == null) {
+                    start = event.getStart().getDate();
+                }
+                //System.out.printf("%s (%s)\n", event.getSummary(), start);
+                //System.out.printf(event.getId());
+                request.setIdConference(event.getId());
+        		
+        		response = pt.previewConferenceRequest(request);
+            }
+        }
+		
+		
+		//chiamata a servizio (con id restiruito dal calendario)
+		return response;
 	}
 
 
