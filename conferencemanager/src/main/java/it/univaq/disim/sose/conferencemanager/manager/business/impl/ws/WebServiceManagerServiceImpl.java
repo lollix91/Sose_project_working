@@ -143,9 +143,6 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		
 		
 		//chiamata a calendario
-        // Build a new authorized API client service.
-        // Note: Do not confuse this class with the
-        //   com.google.api.services.calendar.model.Calendar class.
         com.google.api.services.calendar.Calendar service =
             Calendar.getCalendarService();
 
@@ -178,8 +175,6 @@ public class WebServiceManagerServiceImpl implements ManagerService {
             }
         }
 		
-		
-		//chiamata a servizio (con id restiruito dal calendario)
 		return response;
 	}
 

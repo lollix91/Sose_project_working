@@ -52,7 +52,7 @@ public class JDBCPreviewServiceImpl implements PreviewService {
 			preview.setName(rs.getString("name"));
 			preview.setConferenceAbstract(rs.getString("conference_abstract"));
 			preview.setImage(rs.getString("image"));
-			preview.setPdf(rs.getBytes("pdf"));
+			preview.setPdf(rs.getString("pdf"));
 			preview.setCity(rs.getString("city"));
 			preview.setDate(rs.getDate("date"));
 			preview.setLatitude(rs.getDouble("latitude"));
@@ -110,7 +110,7 @@ public class JDBCPreviewServiceImpl implements PreviewService {
 			preview.setName(rs.getString("name"));
 			preview.setConferenceAbstract(rs.getString("conference_abstract"));
 			preview.setImage(rs.getString("image"));
-			preview.setPdf(rs.getBytes("pdf"));
+			preview.setPdf(rs.getString("pdf"));
 			preview.setCity(rs.getString("city"));
 			preview.setDate(rs.getDate("date"));
 			preview.setLatitude(rs.getDouble("latitude"));

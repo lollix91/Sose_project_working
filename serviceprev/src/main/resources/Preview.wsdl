@@ -40,7 +40,7 @@
 				<xsd:element name="name" minOccurs="1" maxOccurs="1" type="xsd:string"/>
 				<xsd:element name="abstract" minOccurs="1" maxOccurs="1" type="xsd:string"/>
 				<xsd:element name="urlImage" minOccurs="1" maxOccurs="1" type="xsd:anyURI"/>
-			    <xsd:element name="urlPDFs" minOccurs="1" maxOccurs="1" type="xsd:base64Binary"/>
+			    <xsd:element name="urlPDFs" minOccurs="1" maxOccurs="1" type="xsd:anyURI"/>
 			    <xsd:element name="city" minOccurs="1" maxOccurs="1" type="xsd:string"/>
 			    <xsd:element name="date" minOccurs="1" maxOccurs="1" type="xsd:date"/>
 			    <xsd:element name="latitude" minOccurs="1" maxOccurs="1" type="xsd:double"/>
@@ -54,7 +54,7 @@
 					<xsd:element name="name" minOccurs="1" maxOccurs="1" type="xsd:string"/>
 					<xsd:element name="abstract" minOccurs="1" maxOccurs="1" type="xsd:string"/>
 					<xsd:element name="urlImage" minOccurs="1" maxOccurs="1" type="xsd:anyURI"/>
-			    	<xsd:element name="urlPDFs" minOccurs="1" maxOccurs="1" type="xsd:base64Binary"/>
+			    	<xsd:element name="urlPDFs" minOccurs="1" maxOccurs="1" type="xsd:anyURI"/>
 			    	<xsd:element name="city" minOccurs="1" maxOccurs="1" type="xsd:string"/>
 			    	<xsd:element name="date" minOccurs="1" maxOccurs="1" type="xsd:date"/>
 			    	<xsd:element name="latitude" minOccurs="1" maxOccurs="1" type="xsd:double"/>

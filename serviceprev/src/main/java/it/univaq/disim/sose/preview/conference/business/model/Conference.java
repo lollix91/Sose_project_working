@@ -8,7 +8,7 @@ public class Conference implements java.io.Serializable {
 	private String name;
 	private String conferenceAbstract;
 	private String image;
-	private byte[] pdf;
+	private String pdf;
 	private String city;
 	private Date date;
 	private double latitude;
@@ -40,10 +40,10 @@ public class Conference implements java.io.Serializable {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public byte[] getPdf() {
+	public String getPdf() {
 		return pdf;
 	}
-	public void setPdf(byte[] pdf) {
+	public void setPdf(String pdf) {
 		this.pdf = pdf;
 	}
 	public String getCity() {
