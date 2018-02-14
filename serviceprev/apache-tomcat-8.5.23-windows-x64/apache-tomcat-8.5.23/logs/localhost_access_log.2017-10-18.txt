@@ -1,0 +1,2 @@
+0:0:0:0:0:0:0:1 - - [18/Oct/2017:17:55:16 +0200] "GET /wsit-jaxws-fromjava/addnumbers HTTP/1.1" 200 815
+0:0:0:0:0:0:0:1 - - [18/Oct/2017:17:55:18 +0200] "GET /favicon.ico HTTP/1.1" 200 21630

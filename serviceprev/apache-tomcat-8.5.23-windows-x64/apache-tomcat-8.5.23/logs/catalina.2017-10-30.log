@@ -1,0 +1,63 @@
+30-Oct-2017 12:29:54.649 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.23
+30-Oct-2017 12:29:54.706 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Sep 28 2017 10:30:11 UTC
+30-Oct-2017 12:29:54.707 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.23.0
+30-Oct-2017 12:29:54.707 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+30-Oct-2017 12:29:54.708 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+30-Oct-2017 12:29:54.708 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+30-Oct-2017 12:29:54.711 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk1.8.0_144\jre
+30-Oct-2017 12:29:54.711 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_144-b01
+30-Oct-2017 12:29:54.711 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+30-Oct-2017 12:29:54.712 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23
+30-Oct-2017 12:29:54.712 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23
+30-Oct-2017 12:29:54.713 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23\conf\logging.properties
+30-Oct-2017 12:29:54.715 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+30-Oct-2017 12:29:54.719 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+30-Oct-2017 12:29:54.720 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+30-Oct-2017 12:29:54.722 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23
+30-Oct-2017 12:29:54.724 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23
+30-Oct-2017 12:29:54.726 INFORMAZIONI [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23\temp
+30-Oct-2017 12:29:54.729 INFORMAZIONI [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library [1.2.14] using APR version [1.6.2].
+30-Oct-2017 12:29:54.731 INFORMAZIONI [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+30-Oct-2017 12:29:54.732 INFORMAZIONI [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+30-Oct-2017 12:29:55.777 INFORMAZIONI [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 1.0.2l  25 May 2017]
+30-Oct-2017 12:29:57.514 INFORMAZIONI [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+30-Oct-2017 12:29:58.279 INFORMAZIONI [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+30-Oct-2017 12:29:58.305 INFORMAZIONI [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+30-Oct-2017 12:29:58.311 INFORMAZIONI [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+30-Oct-2017 12:29:58.312 INFORMAZIONI [main] org.apache.catalina.startup.Catalina.load Initialization processed in 6124 ms
+30-Oct-2017 12:29:58.524 INFORMAZIONI [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+30-Oct-2017 12:29:58.525 INFORMAZIONI [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.23
+30-Oct-2017 12:29:58.639 INFORMAZIONI [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23\webapps\wsit-jaxws-fromjava.war]
+30-Oct-2017 12:30:04.701 INFORMAZIONI [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+30-Oct-2017 12:30:08.937 INFORMAZIONI [localhost-startStop-1] com.sun.xml.ws.server.MonitorBase.createRoot Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=/wsit-jaxws-fromjava-AddNumbersImplService-AddNumbersImplPort
+30-Oct-2017 12:30:09.329 INFORMAZIONI [localhost-startStop-1] com.sun.xml.ws.transport.http.servlet.WSServletDelegate.<init> WSSERVLET14: inizializzazione del servlet JAX-WS
+30-Oct-2017 12:30:09.336 INFORMAZIONI [localhost-startStop-1] com.sun.xml.ws.transport.http.servlet.WSServletContextListener.contextInitialized WSSERVLET12: inizializzazione del listener del contesto JAX-WS
+30-Oct-2017 12:30:09.337 INFORMAZIONI [localhost-startStop-1] com.sun.xml.ws.transport.http.servlet.WSServletContextListener.contextInitialized WSSERVLET12: inizializzazione del listener del contesto JAX-WS
+30-Oct-2017 12:30:09.400 INFORMAZIONI [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23\webapps\wsit-jaxws-fromjava.war] has finished in [10,761] ms
+30-Oct-2017 12:30:09.402 INFORMAZIONI [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23\webapps\docs]
+30-Oct-2017 12:30:13.598 INFORMAZIONI [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+30-Oct-2017 12:30:13.607 INFORMAZIONI [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23\webapps\docs] has finished in [4,205] ms
+30-Oct-2017 12:30:13.608 INFORMAZIONI [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23\webapps\examples]
+30-Oct-2017 12:30:20.130 INFORMAZIONI [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+30-Oct-2017 12:30:20.232 INFORMAZIONI [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23\webapps\examples] has finished in [6,624] ms
+30-Oct-2017 12:30:20.234 INFORMAZIONI [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23\webapps\host-manager]
+30-Oct-2017 12:30:20.335 INFORMAZIONI [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23\webapps\host-manager] has finished in [101] ms
+30-Oct-2017 12:30:20.336 INFORMAZIONI [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23\webapps\manager]
+30-Oct-2017 12:30:20.415 INFORMAZIONI [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23\webapps\manager] has finished in [79] ms
+30-Oct-2017 12:30:20.415 INFORMAZIONI [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23\webapps\ROOT]
+30-Oct-2017 12:30:23.510 INFORMAZIONI [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+30-Oct-2017 12:30:23.517 INFORMAZIONI [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\server_config\apache-tomcat-8.5.23-windows-x64\apache-tomcat-8.5.23\webapps\ROOT] has finished in [3,101] ms
+30-Oct-2017 12:30:23.523 INFORMAZIONI [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+30-Oct-2017 12:30:23.542 INFORMAZIONI [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+30-Oct-2017 12:30:23.548 INFORMAZIONI [main] org.apache.catalina.startup.Catalina.start Server startup in 25233 ms
+30-Oct-2017 13:01:06.443 INFORMAZIONI [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+30-Oct-2017 13:01:06.693 INFORMAZIONI [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+30-Oct-2017 13:01:06.834 INFORMAZIONI [Thread-5] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+30-Oct-2017 13:01:06.975 INFORMAZIONI [localhost-startStop-2] com.sun.xml.ws.transport.http.servlet.WSServletDelegate.destroy WSSERVLET15: servlet JAX-WS eliminato
+30-Oct-2017 13:01:06.990 INFORMAZIONI [localhost-startStop-2] com.sun.xml.ws.server.WSEndpointImpl.closeManagedObjectManager Closing Metro monitoring root: com.sun.metro:pp=/,type=WSEndpoint,name=/wsit-jaxws-fromjava-AddNumbersImplService-AddNumbersImplPort
+30-Oct-2017 13:01:07.006 INFORMAZIONI [localhost-startStop-2] com.sun.xml.ws.transport.http.servlet.WSServletContextListener.contextDestroyed WSSERVLET13: listener del contesto JAX-WS eliminato
+30-Oct-2017 13:01:07.022 INFORMAZIONI [localhost-startStop-2] com.sun.xml.ws.transport.http.servlet.WSServletContextListener.contextDestroyed WSSERVLET13: listener del contesto JAX-WS eliminato
+30-Oct-2017 13:01:07.084 INFORMAZIONI [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+30-Oct-2017 13:01:07.084 INFORMAZIONI [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+30-Oct-2017 13:01:07.100 INFORMAZIONI [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+30-Oct-2017 13:01:07.100 INFORMAZIONI [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
