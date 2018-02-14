@@ -30,7 +30,10 @@ public class JDBCPreviewServiceImpl implements PreviewService {
 	@Override
 	public List<Conference> getConferences(List<String> conferences) throws BusinessException {
 		// TODO Auto-generated method stub
-		String sql = "SELECT conference_id, name, conference_abstract, image, pdf, city, date, latitude, longitude FROM conferences WHERE conference_id in ("+StringUtils.join(conferences, ',')+")";
+		
+		String join = "'" + StringUtils.join(conferences,"','") + "'";
+		
+		String sql = "SELECT conference_id, name, conference_abstract, image, pdf, city, date, latitude, longitude FROM conferences WHERE conference_id in ("+join+")";
 	    LOGGER.info(sql);
 	    
 		List<Conference> result = new ArrayList<>();
@@ -84,8 +87,8 @@ public class JDBCPreviewServiceImpl implements PreviewService {
 	public Conference getConferenceData(String conferenceId) throws BusinessException {
 		// TODO Auto-generated method stub
 	   
-	   	
-	    String sql = "SELECT conference_id, name, conference_abstract, image, pdf, city, date, latitude, longitude FROM conferences WHERE conference_id="+conferenceId+"";
+	   	System.out.println(conferenceId);
+	    String sql = "SELECT conference_id, name, conference_abstract, image, pdf, city, date, latitude, longitude FROM conferences WHERE conference_id='"+conferenceId+"'";
 	    LOGGER.info(sql);
 	    
 		//List<Conference> result = new ArrayList<>();

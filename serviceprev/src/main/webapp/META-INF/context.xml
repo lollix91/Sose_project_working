@@ -7,7 +7,4 @@
 		      testWhileIdle="true" timeBetweenEvictionRunsMillis="50000"
 		      url="jdbc:mysql://localhost:3306/preview"
 		      username="preview" password="preview"  validationQuery="select 1" />
-		      <ResourceLink name="jdbc/mydb"
-             global="jdbc/mydb"
-              type="javax.sql.DataSource" />
 </Context>

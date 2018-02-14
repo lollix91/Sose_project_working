@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Conference implements java.io.Serializable {
 	
-	private String conferenceId;
+	private Long conferenceId;
 	private String name;
 	private String conferenceAbstract;
 	private String image;
@@ -16,10 +16,10 @@ public class Conference implements java.io.Serializable {
 	
 	
 	
-	public String getConferenceId() {
+	public Long getConferenceId() {
 		return conferenceId;
 	}
-	public void setConferenceId(String conferenceId) {
+	public void setConferenceId(Long conferenceId) {
 		this.conferenceId = conferenceId;
 	}
 	public String getName() {
