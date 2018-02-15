@@ -56,7 +56,7 @@ public class ManagerPTImpl implements ManagerPT {
 		
 		ManagerResponseByDate response = new ManagerResponseByDate();
 		ConferenceType conference = new ConferenceType();
-		
+		/*
 		try {
 			 PreviewResponse rp = service.getConferenceByDate(parameters.getDateConference());
 			
@@ -73,7 +73,7 @@ public class ManagerPTImpl implements ManagerPT {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		*/
 		
 		
 		response.setCalendarEventRecord(conference);
@@ -108,9 +108,10 @@ public class ManagerPTImpl implements ManagerPT {
 	public ManagerResponse getPreviewById(ManagerRequest reqparam) {
 		// TODO Auto-generated method stub
 		
-		ManagerResponse man=service.getInfo(reqparam);
+		//ManagerResponse man=service.getInfo(reqparam);
 	
-		return man;
+		//return man;
+		return null;
 	}
 	
 	

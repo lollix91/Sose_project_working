@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.Events;
+import com.google.gson.Gson;
 
 import it.univaq.disim.sose.conferencemanager.manager.ManagerRequest;
 import it.univaq.disim.sose.conferencemanager.manager.ManagerResponse;
@@ -36,7 +37,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 	private int range;
 
 	@Override
-	public ManagerResponse getInfo(ManagerRequest reqparam) {		
+	public JSONObject getInfo(ManagerRequest reqparam) {		
 		// TODO Auto-generated method stub
 		PreviewService ps = new PreviewService();
 		PreviewPT pt = ps.getPreviewPort();
@@ -61,9 +62,17 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		man.setLongitude(response.getLongitude());
 		man.setLatitude(response.getLatitude());
 		man.setCity(response.getCity());
+		man.setDate(response.getDate());
+		man.setUrlImage(response.getUrlImage());
+		man.setUrlPDFs(response.getUrlPDFs());
+		
+		Gson gson = new Gson();
 		
 		
-		return man;
+		JSONObject json=new JSONObject(gson.toJson(man));
+		System.out.println(json);
+		
+		return json;
 	}
 
 	@Override
@@ -128,7 +137,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public PreviewResponse getConferenceByDate(String date) throws Exception {
+	public JSONObject getConferenceByDate(String date) throws Exception {
 		// TODO Auto-generated method stub
 		
 		
@@ -160,6 +169,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         List<Event> items = events.getItems();
         if (items.size() == 0) {
             System.out.println("No upcoming events found.");
+            return new JSONObject();
         } else {
             System.out.println("Upcoming events");
             for (Event event : items) {
@@ -172,10 +182,17 @@ public class WebServiceManagerServiceImpl implements ManagerService {
                 request.setIdConference(event.getId());
         		
         		response = pt.previewConferenceRequest(request);
+        		
+        		JSONObject json=new JSONObject(response.toString());
+        		System.out.println(json);
+        		
+        		return json;
+        		
             }
         }
 		
-		return response;
+        return new JSONObject();
+
 	}
 
 

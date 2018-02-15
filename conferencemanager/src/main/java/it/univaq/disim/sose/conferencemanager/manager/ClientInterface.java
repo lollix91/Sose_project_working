@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import it.univaq.disim.sose.conferencemanager.clients.PreviewResponse;
 import it.univaq.disim.sose.conferencemanager.manager.business.ManagerService;
 import it.univaq.disim.sose.conferencemanager.manager.business.impl.ws.WebServiceManagerServiceImpl;
 import it.univaq.disim.sose.conferencemanager.manager.webservices.ManagerPTImpl;
@@ -66,8 +67,8 @@ public class ClientInterface extends HttpServlet {
 			WebServiceManagerServiceImpl wm = new WebServiceManagerServiceImpl();
 			
 			//ManagerPTImpl mm = new ManagerPTImpl();
-			ManagerResponse man=wm.getInfo(reqparam);
-			out.write("Parameter " + man.getName());
+			JSONObject man=wm.getInfo(reqparam);
+			out.write(man.toString());
 			
 
 			
@@ -100,6 +101,27 @@ public class ClientInterface extends HttpServlet {
 			try {
 				
 				man = wm.getJsonPois(reqparam);
+				out.write(man.toString());
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+			}
+			
+
+			
+		}
+		else if(whatValue.equals("eventbydate")) {
+			
+			String dateConference = req.getParameter("date");
+			
+
+			WebServiceManagerServiceImpl wm = new WebServiceManagerServiceImpl();
+			
+			//ManagerPTImpl mm = new ManagerPTImpl();
+			JSONObject man;
+			try {
+				
+				man = wm.getConferenceByDate(dateConference);
 				out.write(man.toString());
 
 			} catch (Exception e) {
