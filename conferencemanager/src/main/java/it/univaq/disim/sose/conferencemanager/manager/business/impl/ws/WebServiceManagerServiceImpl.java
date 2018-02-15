@@ -1,5 +1,6 @@
 package it.univaq.disim.sose.conferencemanager.manager.business.impl.ws;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -177,16 +178,22 @@ public class WebServiceManagerServiceImpl implements ManagerService {
                 if (start == null) {
                     start = event.getStart().getDate();
                 }
-                //System.out.printf("%s (%s)\n", event.getSummary(), start);
-                //System.out.printf(event.getId());
+                
                 request.setIdConference(event.getId());
         		
         		response = pt.previewConferenceRequest(request);
         		
-        		JSONObject json=new JSONObject(response.toString());
-        		System.out.println(json);
         		
-        		return json;
+        		Gson gson = new Gson();
+        	    String jsonString = gson.toJson(response);
+        	    try {
+        	        JSONObject json = new JSONObject(jsonString);
+        	        return json;
+        	    } catch (JSONException e) {
+        	        // TODO Auto-generated catch block
+        	        e.printStackTrace();
+        	    }
+        	    
         		
             }
         }

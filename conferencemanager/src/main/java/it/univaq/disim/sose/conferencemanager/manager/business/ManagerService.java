@@ -9,6 +9,6 @@ import org.json.JSONObject;
 public interface ManagerService {
 
 	JSONObject getInfo(ManagerRequest req);
-	  JSONObject getJsonPois(ManagerRequest req) throws Exception;
-	  JSONObject getConferenceByDate(String date) throws Exception;
+	JSONObject getJsonPois(ManagerRequest req) throws Exception;
+	JSONObject getConferenceByDate(String date) throws Exception;
 }

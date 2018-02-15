@@ -56,25 +56,23 @@ public class ManagerPTImpl implements ManagerPT {
 		
 		ManagerResponseByDate response = new ManagerResponseByDate();
 		ConferenceType conference = new ConferenceType();
-		/*
+		
 		try {
-			 PreviewResponse rp = service.getConferenceByDate(parameters.getDateConference());
-			
-			 conference.setCity(rp.getCity());
-			 conference.setAbstract(rp.getAbstract());
-			 conference.setDate(rp.getDate());
-			 conference.setLatitude(rp.getLatitude());
-			 conference.setLongitude(rp.getLongitude());
-			 conference.setName(rp.getName());
-			 conference.setUrlImage(rp.getUrlImage());
-			 conference.setUrlPDFs(rp.getUrlPDFs());
+			 JSONObject rp = service.getConferenceByDate(parameters.getDateConference());
+			 //System.out.println(rp);
+			 conference.setCity(rp.getString("city"));
+			 conference.setAbstract(rp.getString("_abstract"));
+			 conference.setLatitude(rp.getDouble("latitude"));
+			 conference.setLongitude(rp.getDouble("longitude"));
+			 conference.setName(rp.getString("name"));
+			 conference.setUrlImage(rp.getString("urlImage"));
+			 conference.setUrlPDFs(rp.getString("urlPDFs"));
+			 //conference.setDate(value);
 			 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
-		
 		
 		response.setCalendarEventRecord(conference);
 		
