@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -81,7 +82,7 @@ public class ClientInterface extends HttpServlet {
 			WebServiceManagerServiceImpl wm = new WebServiceManagerServiceImpl();
 			
 			//ManagerPTImpl mm = new ManagerPTImpl();
-			JSONObject man;
+			JSONArray man;
 			try {
 				
 				man = wm.getAllConferencesByActualDate(dateConference);

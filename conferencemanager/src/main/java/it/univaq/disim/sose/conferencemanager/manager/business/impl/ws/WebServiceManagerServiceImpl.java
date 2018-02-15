@@ -253,7 +253,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public JSONObject getAllConferencesByActualDate(String date) throws Exception {
+	public JSONArray getAllConferencesByActualDate(String date) throws Exception {
 		// TODO Auto-generated method stub
 		
 		
@@ -267,7 +267,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		
 		List<ConferenceType> conferencelist = new ArrayList<ConferenceType>();
 
-        JSONObject json = new JSONObject();
+        JSONArray json = new JSONArray();
 		
 		//chiamata a calendario
         com.google.api.services.calendar.Calendar service =
@@ -287,7 +287,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         List<Event> items = events.getItems();
         if (items.size() == 0) {
             System.out.println("No upcoming events found.");
-            return new JSONObject();
+            return new JSONArray();
         } else {
             System.out.println("Upcoming events");
             for (Event event : items) {
@@ -300,6 +300,8 @@ public class WebServiceManagerServiceImpl implements ManagerService {
                 
                 response = pt.previewConferenceRequest(request);
 
+                response.setIdConference(event.getId());
+                
                 ConferenceType actualconference = new ConferenceType();
                 
                 actualconference.setName(response.getName());
@@ -310,7 +312,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
                 actualconference.setDate(response.getDate());
                 actualconference.setLatitude(response.getLatitude());
                 actualconference.setLongitude(response.getLongitude());
-                
+                actualconference.setIdConference(response.getIdConference());
                 conferencelist.add(actualconference);
                 
         	    
@@ -322,8 +324,10 @@ public class WebServiceManagerServiceImpl implements ManagerService {
     	    	
     	    	Gson gson = new Gson();
         	    String jsonString = gson.toJson(conference);
-        	    json.put(conference.getName(), new JSONObject(jsonString));
+        	    
+        	    json.put(new JSONObject(jsonString));
     	    }
+    	    
     	    
 //    	    try {
 //    	        JSONObject json = new JSONObject(conferencelist);
