@@ -1,5 +1,6 @@
 package it.univaq.disim.sose.conferencemanager.manager.business.impl.ws;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -12,6 +13,7 @@ import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.Events;
 import com.google.gson.Gson;
 
+import it.univaq.disim.sose.conferencemanager.manager.ConferenceType;
 import it.univaq.disim.sose.conferencemanager.manager.ManagerRequest;
 import it.univaq.disim.sose.conferencemanager.manager.ManagerResponse;
 import it.univaq.disim.sose.conferencemanager.manager.business.ManagerService;
@@ -26,6 +28,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -184,6 +187,52 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         		response = pt.previewConferenceRequest(request);
         		
         		
+        		ManagerResponse man=new ManagerResponse();
+        		Conference conf=new Conference();
+        		conf.setName(response.getName());
+        		conf.setLongitude(response.getLongitude());
+        		conf.setLatitude(response.getLatitude());
+        		conf.setCity(response.getCity());
+        		
+        		
+        		man.setConferenceID(conf.getConferenceId());
+        		System.out.println(conf.getLatitude() +" lat");
+        		
+        		System.out.println(conf.getLongitude() +" long");
+        		String url="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+conf.getLatitude()+","+conf.getLongitude()+"&radius=500&types=food&name=cruise&key=AIzaSyB8YmmJamci1OdCC15vzqB2JRSS8zqIzeo";
+        		URL obj = new URL(url);
+        		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        		
+        		// optional default is GET
+        		con.setRequestMethod("GET");
+
+        		//add request header
+        		con.setRequestProperty("User-Agent", "ciao");
+
+        		int responseCode = con.getResponseCode();
+        		System.out.println("\nSending 'GET' request to URL : " + url);
+        		System.out.println("Response Code : " + responseCode);
+
+        		BufferedReader in = new BufferedReader(
+        		        new InputStreamReader(con.getInputStream()));
+        		String inputLine;
+        		StringBuffer responsejson = new StringBuffer();
+
+        		while ((inputLine = in.readLine()) != null) {
+        			responsejson.append(inputLine);
+        		}
+        		in.close();
+
+        		//print result
+        		
+        		
+        		JSONObject jsonmap=new JSONObject(responsejson.toString());
+        		System.out.println(jsonmap);
+        		
+        		
+        		
+        		
+        		
         		Gson gson = new Gson();
         	    String jsonString = gson.toJson(response);
         	    try {
@@ -200,6 +249,93 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		
         return new JSONObject();
 
+	}
+
+	@Override
+	public JSONObject getAllConferencesByActualDate(String date) throws Exception {
+		// TODO Auto-generated method stub
+		
+		
+		PreviewService ps = new PreviewService();
+		PreviewPT pt = ps.getPreviewPort();
+		PreviewRequest request = new PreviewRequest();
+		PreviewResponse response = new PreviewResponse();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	    Date convertedCurrentDate = sdf.parse(date);
+		
+		List<ConferenceType> conferencelist = new ArrayList<ConferenceType>();
+
+        JSONObject json = new JSONObject();
+		
+		//chiamata a calendario
+        com.google.api.services.calendar.Calendar service =
+            Calendar.getCalendarService();
+
+        // List the next 10 events from the primary calendar.
+        DateTime now = new DateTime(convertedCurrentDate);
+        
+        Events events = service.events().list("primary")
+            .setMaxResults(10)
+            .setTimeMin(now)
+            .setOrderBy("startTime")
+            .setSingleEvents(true)
+            .execute();
+        
+        
+        List<Event> items = events.getItems();
+        if (items.size() == 0) {
+            System.out.println("No upcoming events found.");
+            return new JSONObject();
+        } else {
+            System.out.println("Upcoming events");
+            for (Event event : items) {
+                DateTime start = event.getStart().getDateTime();
+                if (start == null) {
+                    start = event.getStart().getDate();
+                }
+                
+                request.setIdConference(event.getId());
+                
+                response = pt.previewConferenceRequest(request);
+
+                ConferenceType actualconference = new ConferenceType();
+                
+                actualconference.setName(response.getName());
+                actualconference.setAbstract(response.getAbstract());
+                actualconference.setCity(response.getCity());
+                actualconference.setUrlImage(response.getUrlImage());
+                actualconference.setUrlPDFs(response.getUrlPDFs());
+                actualconference.setDate(response.getDate());
+                actualconference.setLatitude(response.getLatitude());
+                actualconference.setLongitude(response.getLongitude());
+                
+                conferencelist.add(actualconference);
+                
+        	    
+            }
+            
+    		
+    	    for(ConferenceType conference: conferencelist)
+    	    {
+    	    	
+    	    	Gson gson = new Gson();
+        	    String jsonString = gson.toJson(conference);
+        	    json.put(conference.getName(), jsonString);
+    	    }
+    	    
+//    	    try {
+//    	        JSONObject json = new JSONObject(conferencelist);
+//    	        return json;
+//    	    } catch (JSONException e) {
+//    	        // TODO Auto-generated catch block
+//    	        e.printStackTrace();
+//    	    }
+    	    System.out.println("saaaaaaaaaaaaaaaaaaaad"+json);
+    	    return json;
+        }
+		
+        
 	}
 
 

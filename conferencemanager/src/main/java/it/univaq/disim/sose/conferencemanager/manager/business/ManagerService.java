@@ -11,4 +11,5 @@ public interface ManagerService {
 	JSONObject getInfo(ManagerRequest req);
 	JSONObject getJsonPois(ManagerRequest req) throws Exception;
 	JSONObject getConferenceByDate(String date) throws Exception;
+	JSONObject getAllConferencesByActualDate(String date) throws Exception;
 }

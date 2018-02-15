@@ -45,6 +45,18 @@ public class ManagerPTImpl implements ManagerPT {
 	@Override
 	public ManagerResponseListByDate managerConferenceListRequestByDate(ManagerRequestListByDate parameters) {
 		// TODO Auto-generated method stub
+		
+		LOGGER.info("CALLED MANAGERLISTBYDATE");
+		
+		ManagerResponseListByDate conferences_list = new ManagerResponseListByDate();
+		
+		try {
+			service.getAllConferencesByActualDate(parameters.getDateToday());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 
