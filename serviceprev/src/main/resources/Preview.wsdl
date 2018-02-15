@@ -37,6 +37,7 @@
         
 	    <xsd:complexType name="previewResponse">      
 			<xsd:sequence minOccurs="1" maxOccurs="1">
+				<xsd:element name="idConference" minOccurs="1" maxOccurs="1" type="xsd:string"/>			
 				<xsd:element name="name" minOccurs="1" maxOccurs="1" type="xsd:string"/>
 				<xsd:element name="abstract" minOccurs="1" maxOccurs="1" type="xsd:string"/>
 				<xsd:element name="urlImage" minOccurs="1" maxOccurs="1" type="xsd:anyURI"/>
