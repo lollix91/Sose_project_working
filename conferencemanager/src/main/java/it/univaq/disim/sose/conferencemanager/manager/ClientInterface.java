@@ -75,15 +75,23 @@ public class ClientInterface extends HttpServlet {
 		}
 		else if(whatValue.equals("list")) {
 			
-			ManagerRequest reqparam = new ManagerRequest();
+			String dateConference = req.getParameter("date");
 			
 
 			WebServiceManagerServiceImpl wm = new WebServiceManagerServiceImpl();
 			
 			//ManagerPTImpl mm = new ManagerPTImpl();
-			//ManagerResponse man=wm.getInfo(reqparam);
-			//out.write("Parameter " + man.getName());
+			JSONObject man;
+			try {
+				
+				man = wm.getAllConferencesByActualDate(dateConference);
+				out.write(man.toString());
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+			}
 			
+
 
 			
 		}

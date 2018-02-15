@@ -186,6 +186,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         		
         		response = pt.previewConferenceRequest(request);
         		
+        		response.setIdConference(event.getId());
         		
         		ManagerResponse man=new ManagerResponse();
         		Conference conf=new Conference();
@@ -321,7 +322,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
     	    	
     	    	Gson gson = new Gson();
         	    String jsonString = gson.toJson(conference);
-        	    json.put(conference.getName(), jsonString);
+        	    json.put(conference.getName(), new JSONObject(jsonString));
     	    }
     	    
 //    	    try {
