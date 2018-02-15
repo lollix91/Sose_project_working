@@ -183,10 +183,9 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         		
         		response = pt.previewConferenceRequest(request);
         		
-        		response.setIdConference(event.getId());
         		
         		Gson gson = new Gson();
-        	    String jsonString = gson.toJson(response).toString();
+        	    String jsonString = gson.toJson(response);
         	    try {
         	        JSONObject json = new JSONObject(jsonString);
         	        return json;
