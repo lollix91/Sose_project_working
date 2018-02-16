@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -75,15 +76,23 @@ public class ClientInterface extends HttpServlet {
 		}
 		else if(whatValue.equals("list")) {
 			
-			ManagerRequest reqparam = new ManagerRequest();
+			String dateConference = req.getParameter("date");
 			
 
 			WebServiceManagerServiceImpl wm = new WebServiceManagerServiceImpl();
 			
 			//ManagerPTImpl mm = new ManagerPTImpl();
-			//ManagerResponse man=wm.getInfo(reqparam);
-			//out.write("Parameter " + man.getName());
+			JSONArray man;
+			try {
+				
+				man = wm.getAllConferencesByActualDate(dateConference);
+				out.write(man.toString());
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+			}
 			
+
 
 			
 		}
