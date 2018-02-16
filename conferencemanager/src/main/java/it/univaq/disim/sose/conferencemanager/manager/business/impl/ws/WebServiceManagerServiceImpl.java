@@ -159,7 +159,6 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         com.google.api.services.calendar.Calendar service =
             Calendar.getCalendarService();
 
-        // List the next 10 events from the primary calendar.
         DateTime now = new DateTime(convertedCurrentDate);
         
         Events events = service.events().list("primary")
@@ -322,7 +321,6 @@ public class WebServiceManagerServiceImpl implements ManagerService {
     	    	
     	    	Gson gson = new Gson();
         	    String jsonString = gson.toJson(conference);
-
         	    
         	    json.put(new JSONObject(jsonString));
     	    }
