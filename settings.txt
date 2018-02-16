@@ -1,0 +1,3 @@
+PreviewService
+- Creare Utente nel DBMS con nome utente e password "preview". Al tempo stesso in fase di creazione permettere la    creazione di un database avente stesso nome.
+- Importare il dump presente nella cartella database al fine di riempire il nostro DB 
