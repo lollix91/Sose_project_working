@@ -174,22 +174,11 @@
             <input message="tns:managerConferenceListMessageRequestByDate"/>
             <output message="tns:managerConferenceListMessageResponseByDate"/>
         </operation>
-        <operation name="managerConferenceRequestById">
-            <input message="tns:managerConferenceMessageRequestById"/>
-            <output message="tns:managerConferenceMessageResponseById"/>
-        </operation>
         <operation name="managerConferenceRequestByDate">
             <input message="tns:managerConferenceMessageRequestByDate"/>
             <output message="tns:managerConferenceMessageResponseByDate"/>
-        </operation>		
-        <operation name="managerPoiRequestByLocation">
-            <input message="tns:managerPoiMessageRequestByLocation"/>
-            <output message="tns:managerPoiMessageResponseByLocation"/>
         </operation>	
-        
-        <operation name="getPreviewById">
-         <input message="tns:requestPreview"/>
-         <output message="tns:responsePreview"/></operation>	
+        	
     </portType>    
     <binding name="ManagerBinding" type="tns:ManagerPT">
       <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
@@ -202,15 +191,7 @@
 		              <soap:body use="literal"/>
 		      </output>
 	      </operation>
-	      <operation name="managerConferenceRequestById">
-	          <soap:operation soapAction=""/>
-		      <input>
-		              <soap:body use="literal"/>
-		      </input>
-		      <output>
-		              <soap:body use="literal"/>
-		      </output>
-	      </operation>
+	      
 	      <operation name="managerConferenceRequestByDate">
 	          <soap:operation soapAction=""/>
 		      <input>
@@ -220,25 +201,8 @@
 		              <soap:body use="literal"/>
 		      </output>
 	      </operation>
-	      <operation name="managerPoiRequestByLocation">
-	          <soap:operation soapAction=""/>
-		      <input>
-		              <soap:body use="literal"/>
-		      </input>
-		      <output>
-		              <soap:body use="literal"/>
-		      </output>	      
-		     
-	     	 </operation>
-	     	  <operation name="getPreviewById">
-		      
-		      <input>
-		              <soap:body use="literal"/>
-		      </input>
-		      <output>
-		              <soap:body use="literal"/>
-		      </output>
-		      </operation>		  
+	     
+	     		  
     </binding>
     <service name="ManagerService">
       <port name="ManagerPort" binding="tns:ManagerBinding">

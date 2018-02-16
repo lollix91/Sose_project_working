@@ -91,38 +91,6 @@ public class ManagerPTImpl implements ManagerPT {
 		return response;
 	}
 
-	@Override
-	public ManagerResponseById managerConferenceRequestById(ManagerRequestById parameters) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ManagerPoiResponseByLocation managerPoiRequestByLocation(ManagerPoiRequestByLocation parameters) {
-		// TODO Auto-generated method stub
-		
-	
-		try {
-			String conference=parameters.getEventLocation();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		//maps
-		return null;
-	}
-
-	@Override
-	public ManagerResponse getPreviewById(ManagerRequest reqparam) {
-		// TODO Auto-generated method stub
-		
-		//ManagerResponse man=service.getInfo(reqparam);
-	
-		//return man;
-		return null;
-	}
 	
 	
 }
