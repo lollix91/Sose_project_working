@@ -231,8 +231,6 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         		
         		
         		
-        		
-        		
         		Gson gson = new Gson();
         	    String jsonString = gson.toJson(response);
         	    try {
@@ -321,7 +319,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
     	    	
     	    	Gson gson = new Gson();
         	    String jsonString = gson.toJson(conference);
-        	    json.put(conference.getName(), jsonString);
+        	    json.put(conference.getName(), new JSONObject(jsonString));
     	    }
     	    
 //    	    try {
@@ -331,7 +329,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 //    	        // TODO Auto-generated catch block
 //    	        e.printStackTrace();
 //    	    }
-    	    System.out.println("saaaaaaaaaaaaaaaaaaaad"+json);
+    	    
     	    return json;
         }
 		
