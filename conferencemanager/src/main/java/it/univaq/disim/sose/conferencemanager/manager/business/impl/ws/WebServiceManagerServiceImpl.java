@@ -39,6 +39,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Service
 public class WebServiceManagerServiceImpl implements ManagerService {
@@ -52,7 +53,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
     @Path("/getInfo")
 	@Produces({MediaType.APPLICATION_JSON})
 	@Override
-	public JSONObject getInfo(@QueryParam("id") String id) {		
+	public Response getInfo(@QueryParam("id") String id) {		
 		// TODO Auto-generated method stub
 		PreviewService ps = new PreviewService();
 		PreviewPT pt = ps.getPreviewPort();
@@ -88,7 +89,10 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		JSONObject json=new JSONObject(gson.toJson(man));
 		System.out.println(json);
 		
-		return json;
+		return Response.ok(man).build();
+
+		
+		//return json;
 	}
 
 	@GET

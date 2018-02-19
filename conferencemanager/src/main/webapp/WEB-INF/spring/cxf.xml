@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
        xmlns:jaxws="http://cxf.apache.org/jaxws" 
        xmlns:cxf="http://cxf.apache.org/core" 
+       xmlns:http="http://cxf.apache.org/transports/http/configuration"
        xmlns:jaxrs="http://cxf.apache.org/jaxrs"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd 
                            http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd 
@@ -27,6 +28,14 @@
         </jaxrs:serviceBeans>
         
     </jaxrs:server>
+    
+
+    
+    
+    <bean class="org.apache.cxf.jaxrs.provider.json.JSONProvider">
+        <property name="dropRootElement" value="true" />
+        <property name="supportUnwrapped" value="true" />
+    </bean>
     
     
     <bean id="ManagerPTImpl" class="it.univaq.disim.sose.conferencemanager.manager.business.impl.ws.WebServiceManagerServiceImpl" />
