@@ -32,6 +32,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
+
 @Service
 public class WebServiceManagerServiceImpl implements ManagerService {
 	
@@ -40,14 +48,16 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 	@Value("#{cfg.range}")
 	private int range;
 
+	@GET
+    @Path("/getInfo")
+	@Produces({MediaType.APPLICATION_JSON})
 	@Override
-	public JSONObject getInfo(ManagerRequest reqparam) {		
+	public JSONObject getInfo(@QueryParam("id") String id) {		
 		// TODO Auto-generated method stub
 		PreviewService ps = new PreviewService();
 		PreviewPT pt = ps.getPreviewPort();
 		PreviewRequest request = new PreviewRequest();
-		request.setIdConference(reqparam.getIdRequest());
-		
+		request.setIdConference(id);
 		
 		
 		PreviewResponse response = pt.previewConferenceRequest(request);
@@ -61,7 +71,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		*/
 
 		ManagerResponse man=new ManagerResponse();
-		man.setConferenceID(reqparam.getIdRequest());
+		man.setConferenceID(id);
 		man.setName(response.getName());
 		man.setLongitude(response.getLongitude());
 		man.setLatitude(response.getLatitude());
@@ -69,6 +79,8 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		man.setDate(response.getDate());
 		man.setUrlImage(response.getUrlImage());
 		man.setUrlPDFs(response.getUrlPDFs());
+		
+		
 		
 		Gson gson = new Gson();
 		
@@ -79,6 +91,10 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		return json;
 	}
 
+	@GET
+    @Path("/managerConferenceListRequestByDate")
+    @Consumes("text/plain")
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Override
 	public JSONObject getJsonPois(ManagerRequest req) throws Exception {
 		// TODO Auto-generated method stub
@@ -140,6 +156,10 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		return json;
 	}
 
+	@GET
+    @Path("/managerConferenceListRequestByDate")
+    @Consumes("text/plain")
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Override
 	public JSONObject getConferenceByDate(String date) throws Exception {
 		// TODO Auto-generated method stub
@@ -249,6 +269,10 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 
 	}
 
+	@GET
+    @Path("/managerConferenceListRequestByDate")
+    @Consumes("text/plain")
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Override
 	public JSONArray getAllConferencesByActualDate(String date) throws Exception {
 		// TODO Auto-generated method stub

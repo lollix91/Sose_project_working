@@ -2,11 +2,20 @@ package it.univaq.disim.sose.conferencemanager.manager.webservices;
 
 
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 import it.univaq.disim.sose.conferencemanager.clients.PreviewPT;
 import it.univaq.disim.sose.conferencemanager.clients.PreviewRequest;
@@ -32,8 +41,6 @@ import it.univaq.disim.sose.conferencemanager.manager.business.ManagerService;
 import it.univaq.disim.sose.conferencemanager.manager.business.model.Conference;
 
 
-
-@Component(value = "ManagerPTImpl")
 public class ManagerPTImpl implements ManagerPT {
 
 	private static Logger LOGGER = LoggerFactory.getLogger(ManagerPTImpl.class);
@@ -42,6 +49,7 @@ public class ManagerPTImpl implements ManagerPT {
 	private ManagerService service;
 		
 
+	
 	@Override
 	public ManagerResponseListByDate managerConferenceListRequestByDate(ManagerRequestListByDate parameters) {
 		// TODO Auto-generated method stub
