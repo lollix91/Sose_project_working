@@ -20,8 +20,8 @@ public interface ManagerService {
 	//JSONObject getInfo(ManagerRequest req);
 	Response getInfo(String req);
 	
-	JSONObject getJsonPois(ManagerRequest req) throws Exception;
+	Response getJsonPois(String req) throws Exception;
 	
-	JSONObject getConferenceByDate(String date) throws Exception;
-	JSONArray getAllConferencesByActualDate(String date) throws Exception;
+	Response getConferenceByDate(String date) throws Exception;
+	Response getAllConferencesByActualDate(String date) throws Exception;
 }

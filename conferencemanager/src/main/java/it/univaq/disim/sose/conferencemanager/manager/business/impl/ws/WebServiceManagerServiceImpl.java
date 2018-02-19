@@ -38,8 +38,10 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 
 @Service
 public class WebServiceManagerServiceImpl implements ManagerService {
@@ -74,6 +76,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		ManagerResponse man=new ManagerResponse();
 		man.setConferenceID(id);
 		man.setName(response.getName());
+		man.setAbstract(response.getAbstract());
 		man.setLongitude(response.getLongitude());
 		man.setLatitude(response.getLatitude());
 		man.setCity(response.getCity());
@@ -96,11 +99,10 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 	}
 
 	@GET
-    @Path("/managerConferenceListRequestByDate")
-    @Consumes("text/plain")
-    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/getJsonPois")
+	@Produces({MediaType.APPLICATION_JSON})
 	@Override
-	public JSONObject getJsonPois(ManagerRequest req) throws Exception {
+	public Response getJsonPois(@QueryParam("id") String id) throws Exception {
 		// TODO Auto-generated method stub
 		/*
 		String url="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyB8YmmJamci1OdCC15vzqB2JRSS8zqIzeo";
@@ -109,8 +111,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		PreviewService ps = new PreviewService();
 		PreviewPT pt = ps.getPreviewPort();
 		PreviewRequest request = new PreviewRequest();
-		request.setIdConference(req.getIdRequest());
-		
+		request.setIdConference(id);
 		
 		
 		PreviewResponse response = pt.previewConferenceRequest(request);
@@ -150,22 +151,20 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 			responsejson.append(inputLine);
 		}
 		in.close();
-
-		//print result
 		
 		
 		JSONObject json=new JSONObject(responsejson.toString());
 		System.out.println(json);
 		
-		return json;
+		//return json;
+		return Response.ok(responsejson.toString()).build();
 	}
 
 	@GET
-    @Path("/managerConferenceListRequestByDate")
-    @Consumes("text/plain")
-    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Path("/getConferenceByDate")
+	@Produces({MediaType.APPLICATION_JSON})
 	@Override
-	public JSONObject getConferenceByDate(String date) throws Exception {
+	public Response getConferenceByDate(@QueryParam("date") String date) throws Exception {
 		// TODO Auto-generated method stub
 		
 		
@@ -196,7 +195,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         List<Event> items = events.getItems();
         if (items.size() == 0) {
             System.out.println("No upcoming events found.");
-            return new JSONObject();
+            return Response.ok(null).build();
         } else {
             System.out.println("Upcoming events");
             for (Event event : items) {
@@ -259,7 +258,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         	    String jsonString = gson.toJson(response);
         	    try {
         	        JSONObject json = new JSONObject(jsonString);
-        	        return json;
+        	        return Response.ok(jsonString.toString()).build();
         	    } catch (JSONException e) {
         	        // TODO Auto-generated catch block
         	        e.printStackTrace();
@@ -269,16 +268,16 @@ public class WebServiceManagerServiceImpl implements ManagerService {
             }
         }
 		
-        return new JSONObject();
+        return Response.ok(null).build();
 
 	}
 
 	@GET
-    @Path("/managerConferenceListRequestByDate")
+    @Path("/getAllConferencesByActualDate")
     @Consumes("text/plain")
     @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Override
-	public JSONArray getAllConferencesByActualDate(String date) throws Exception {
+	public Response getAllConferencesByActualDate(@QueryParam("date") String date) throws Exception {
 		// TODO Auto-generated method stub
 		
 		
@@ -312,7 +311,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         List<Event> items = events.getItems();
         if (items.size() == 0) {
             System.out.println("No upcoming events found.");
-            return new JSONArray();
+            return Response.ok(null).build();
         } else {
             System.out.println("Upcoming events");
             for (Event event : items) {
@@ -343,15 +342,17 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         	    
             }
             
-    		
-    	    for(ConferenceType conference: conferencelist)
-    	    {
-    	    	
-    	    	Gson gson = new Gson();
-        	    String jsonString = gson.toJson(conference);
-        	    
-        	    json.put(new JSONObject(jsonString));
-    	    }
+            GenericEntity<List<ConferenceType>> list = new GenericEntity<List<ConferenceType>>(conferencelist) {};
+            return Response.ok(list,MediaType.APPLICATION_JSON).build();
+            
+//    	    for(ConferenceType conference: conferencelist)
+//    	    {
+//    	    	
+//    	    	Gson gson = new Gson();
+//        	    String jsonString = gson.toJson(conference);
+//        	    
+//        	    json.put(new JSONObject(jsonString));
+//    	    }
     	    
     	    
 //    	    try {
@@ -362,7 +363,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 //    	        e.printStackTrace();
 //    	    }
     	    
-    	    return json;
+    	    //return json;
         }
 		
         
