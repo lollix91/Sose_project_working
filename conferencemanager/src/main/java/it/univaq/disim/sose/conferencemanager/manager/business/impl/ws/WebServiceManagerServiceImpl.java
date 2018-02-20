@@ -14,7 +14,6 @@ import com.google.api.services.calendar.model.Events;
 import com.google.gson.Gson;
 
 import it.univaq.disim.sose.conferencemanager.manager.ConferenceType;
-import it.univaq.disim.sose.conferencemanager.manager.ManagerRequest;
 import it.univaq.disim.sose.conferencemanager.manager.ManagerResponse;
 import it.univaq.disim.sose.conferencemanager.manager.business.ManagerService;
 import it.univaq.disim.sose.conferencemanager.manager.business.model.Conference;
@@ -27,21 +26,18 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
 
 @Service
 public class WebServiceManagerServiceImpl implements ManagerService {
@@ -57,22 +53,17 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 	@Override
 	public Response getInfo(@QueryParam("id") String id) {		
 		// TODO Auto-generated method stub
+		
+		LOGGER.info("CALLED GETINFO BY ID");
+		
+		
 		PreviewService ps = new PreviewService();
 		PreviewPT pt = ps.getPreviewPort();
 		PreviewRequest request = new PreviewRequest();
 		request.setIdConference(id);
 		
-		
 		PreviewResponse response = pt.previewConferenceRequest(request);
 		
-		
-		/*Conference conf=new Conference();
-		conf.setName(response.getName());
-		conf.setLongitude(response.getLongitude());
-		conf.setLatitude(response.getLatitude());
-		conf.setCity(response.getCity());
-		*/
-
 		ManagerResponse man=new ManagerResponse();
 		man.setConferenceID(id);
 		man.setName(response.getName());
@@ -84,18 +75,12 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		man.setUrlImage(response.getUrlImage());
 		man.setUrlPDFs(response.getUrlPDFs());
 		
-		
-		
 		Gson gson = new Gson();
-		
-		
 		JSONObject json=new JSONObject(gson.toJson(man));
 		System.out.println(json);
 		
 		return Response.ok(man).build();
 
-		
-		//return json;
 	}
 
 	@GET
@@ -104,16 +89,14 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 	@Override
 	public Response getJsonPois(@QueryParam("id") String id) throws Exception {
 		// TODO Auto-generated method stub
-		/*
-		String url="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=food&name=cruise&key=AIzaSyB8YmmJamci1OdCC15vzqB2JRSS8zqIzeo";
-		*/
+		
+		LOGGER.info("CALLED GETJSONPOIS BY ID");
 		
 		PreviewService ps = new PreviewService();
 		PreviewPT pt = ps.getPreviewPort();
 		PreviewRequest request = new PreviewRequest();
 		request.setIdConference(id);
-		
-		
+
 		PreviewResponse response = pt.previewConferenceRequest(request);
 		
 		ManagerResponse man=new ManagerResponse();
@@ -132,10 +115,8 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		
-		// optional default is GET
 		con.setRequestMethod("GET");
 
-		//add request header
 		con.setRequestProperty("User-Agent", "ciao");
 
 		int responseCode = con.getResponseCode();
@@ -156,7 +137,6 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		JSONObject json=new JSONObject(responsejson.toString());
 		System.out.println(json);
 		
-		//return json;
 		return Response.ok(responsejson.toString()).build();
 	}
 
@@ -167,7 +147,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 	public Response getConferenceByDate(@QueryParam("date") String date) throws Exception {
 		// TODO Auto-generated method stub
 		
-		
+		LOGGER.info("CALLED GETCONFERENCE BY DATE");
 		
 		PreviewService ps = new PreviewService();
 		PreviewPT pt = ps.getPreviewPort();
@@ -182,7 +162,6 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 	    c.add(java.util.Calendar.DATE, 1);
 	    Date convertedNextDate = c.getTime();
 		
-		//chiamata a calendario
         com.google.api.services.calendar.Calendar service =
             Calendar.getCalendarService();
 
@@ -231,10 +210,8 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         		URL obj = new URL(url);
         		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         		
-        		// optional default is GET
         		con.setRequestMethod("GET");
 
-        		//add request header
         		con.setRequestProperty("User-Agent", "ciao");
 
         		int responseCode = con.getResponseCode();
@@ -251,13 +228,8 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         		}
         		in.close();
 
-        		//print result
-        		
-        		
         		JSONObject jsonmap=new JSONObject(responsejson.toString());
         		System.out.println(jsonmap);
-        		
-        		
         		
         		Gson gson = new Gson();
         	    String jsonString = gson.toJson(response);
@@ -274,7 +246,6 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         }
 		
         return Response.ok(null).build();
-
 	}
 
 	@GET
@@ -284,7 +255,8 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 	@Override
 	public Response getAllConferencesByActualDate(@QueryParam("date") String date) throws Exception {
 		// TODO Auto-generated method stub
-		
+
+		LOGGER.info("CALLED GETALLCONFERENCES BY ACTUAL DATE");
 		
 		PreviewService ps = new PreviewService();
 		PreviewPT pt = ps.getPreviewPort();
@@ -296,13 +268,9 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		
 		List<ConferenceType> conferencelist = new ArrayList<ConferenceType>();
 
-        JSONArray json = new JSONArray();
-		
-		//chiamata a calendario
         com.google.api.services.calendar.Calendar service =
             Calendar.getCalendarService();
 
-        // List the next 10 events from the primary calendar.
         DateTime now = new DateTime(convertedCurrentDate);
         
         Events events = service.events().list("primary")
@@ -350,35 +318,10 @@ public class WebServiceManagerServiceImpl implements ManagerService {
             GenericEntity<List<ConferenceType>> list = new GenericEntity<List<ConferenceType>>(conferencelist) {};
             return Response.ok(list,MediaType.APPLICATION_JSON).build();
             
-//    	    for(ConferenceType conference: conferencelist)
-//    	    {
-//    	    	
-//    	    	Gson gson = new Gson();
-//        	    String jsonString = gson.toJson(conference);
-//        	    
-//        	    json.put(new JSONObject(jsonString));
-//    	    }
-    	    
-    	    
-//    	    try {
-//    	        JSONObject json = new JSONObject(conferencelist);
-//    	        return json;
-//    	    } catch (JSONException e) {
-//    	        // TODO Auto-generated catch block
-//    	        e.printStackTrace();
-//    	    }
-    	    
-    	    //return json;
         }
 		
         
 	}
 
-
-
-
-	
-	
-	
 
 }

@@ -17,11 +17,8 @@ import org.json.JSONObject;
 
 public interface ManagerService {
 
-	//JSONObject getInfo(ManagerRequest req);
 	Response getInfo(String req);
-	
 	Response getJsonPois(String req) throws Exception;
-	
 	Response getConferenceByDate(String date) throws Exception;
 	Response getAllConferencesByActualDate(String date) throws Exception;
 }

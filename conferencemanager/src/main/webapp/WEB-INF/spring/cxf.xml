@@ -9,8 +9,6 @@
                            http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd 
                            http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
                            http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
-     
-    
     
                            
     <jaxws:endpoint id="ManagerHTTP" 
@@ -28,15 +26,11 @@
         </jaxrs:serviceBeans>
         
     </jaxrs:server>
-    
 
-    
-    
     <bean class="org.apache.cxf.jaxrs.provider.json.JSONProvider">
         <property name="dropRootElement" value="true" />
         <property name="supportUnwrapped" value="true" />
     </bean>
-    
     
     <bean id="ManagerPTImpl" class="it.univaq.disim.sose.conferencemanager.manager.business.impl.ws.WebServiceManagerServiceImpl" />
 	
