@@ -1,6 +1,6 @@
 # Sose_project_working
 
-- Questions
+## Questions
 
         - Adding the final database in /database (project serviceprev)
         - JONObject in response (is it correct??)..difference between SOAP and REST with respect to the WSDL, so which type of                     interaction we need.
@@ -11,7 +11,7 @@
 
 
 
-- Application and services 
+## Application and services 
 
 - Google Maps
 To integrate this service in our project, it's enough to get the API_KEY from Google Website to enable the retrieve of maps and in particular of POIs given certain latitude and longitude. This API return a JSON object that is used in the mobile application (the client) to display the map on the mobile phone and the related POIs. To do this, a Google account is required, and you have to request for key in free mode.
