@@ -87,11 +87,9 @@ public class JDBCPreviewServiceImpl implements PreviewService {
 	public Conference getConferenceData(String conferenceId) throws BusinessException {
 		// TODO Auto-generated method stub
 	   
-	   	//System.out.println(conferenceId);
 	    String sql = "SELECT conference_id, name, conference_abstract, image, pdf, city, date, latitude, longitude FROM conferences WHERE conference_id='"+conferenceId+"'";
 	    LOGGER.info(sql);
 	    
-		//List<Conference> result = new ArrayList<>();
 		Connection con = null;
 		Statement st = null;
 		ResultSet rs = null;

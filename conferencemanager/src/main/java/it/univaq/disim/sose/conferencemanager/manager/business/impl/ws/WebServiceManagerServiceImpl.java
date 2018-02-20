@@ -47,6 +47,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 	@Value("#{cfg.range}")
 	private int range;
 
+	
 	@GET
     @Path("/getInfo")
 	@Produces({MediaType.APPLICATION_JSON})

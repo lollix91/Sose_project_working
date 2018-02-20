@@ -6,9 +6,19 @@ import it.univaq.disim.sose.preview.conference.business.model.Conference;
 
 public interface PreviewService {
 
-	// get conferences (multiple) data
+	/**
+	 * 
+	 * @param List of conferences
+	 * @return Data about all the conferences
+	 * @throws BusinessException
+	 */
 	List<Conference> getConferences(List<String> conferences) throws BusinessException;
 	
-	// get single conference data
+	/**
+	 * 
+	 * @param conferenceId Conference id
+	 * @return Data about a certain conference
+	 * @throws BusinessException
+	 */
 	Conference getConferenceData(String conferenceId) throws BusinessException;
 }

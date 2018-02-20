@@ -37,8 +37,11 @@ public class PreviewPTImpl implements PreviewPT {
 		
 		
 		try {
-			
+		
+		// calling service for getting data about this particular conference	
 		Conference conference = service.getConferenceData(conferenceId.getIdConference());
+		
+		// creating and setting the response for the prosumer
 		PreviewResponse response = new PreviewResponse();
 		
 		response.setName(conference.getName());
@@ -47,6 +50,7 @@ public class PreviewPTImpl implements PreviewPT {
 		response.setUrlPDFs(conference.getPdf());
 		response.setCity(conference.getCity());
 		
+		// formatting data
 		GregorianCalendar c = new GregorianCalendar();
 		c.setTime(conference.getDate());
 		XMLGregorianCalendar date = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
@@ -70,9 +74,12 @@ public class PreviewPTImpl implements PreviewPT {
 		LOGGER.info("CALLED Multiplepreview");
 		
 		try {
+			
+			// calling service for getting data about the conferences	
 			List<Conference> conferences = service.getConferences(parameters.getConferencesList());
 			PreviewMultipleResponse response = new PreviewMultipleResponse();
 			
+			// add each conference (data about this latter) in the response
 			for (Conference conference : conferences) {
 				ConferenceType actualConference = new ConferenceType();
 				
