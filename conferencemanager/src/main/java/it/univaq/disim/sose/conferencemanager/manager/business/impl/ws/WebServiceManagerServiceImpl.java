@@ -177,6 +177,10 @@ public class WebServiceManagerServiceImpl implements ManagerService {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	    Date convertedCurrentDate = sdf.parse(date);
 		
+	    java.util.Calendar c = java.util.Calendar.getInstance();
+	    c.setTime(convertedCurrentDate);
+	    c.add(java.util.Calendar.DATE, 1);
+	    Date convertedNextDate = c.getTime();
 		
 		//chiamata a calendario
         com.google.api.services.calendar.Calendar service =
@@ -187,6 +191,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         Events events = service.events().list("primary")
             .setMaxResults(1)
             .setTimeMin(now)
+            .setTimeMax(new DateTime(convertedNextDate))
             .setOrderBy("startTime")
             .setSingleEvents(true)
             .execute();
@@ -258,7 +263,7 @@ public class WebServiceManagerServiceImpl implements ManagerService {
         	    String jsonString = gson.toJson(response);
         	    try {
         	        JSONObject json = new JSONObject(jsonString);
-        	        return Response.ok(jsonString.toString()).build();
+        	        return Response.ok(json.toString()).build();
         	    } catch (JSONException e) {
         	        // TODO Auto-generated catch block
         	        e.printStackTrace();
