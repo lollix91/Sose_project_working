@@ -1,6 +1,5 @@
 package it.univaq.disim.sose.conferencemanager.manager.business.impl.ws;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;

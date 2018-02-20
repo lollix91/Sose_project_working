@@ -170,40 +170,12 @@
     <part name="respparam" element="tns:managerPreviewResp"/>
     </message>
     <portType name="ManagerPT">
-	    <operation name="managerConferenceListRequestByDate">
-            <input message="tns:managerConferenceListMessageRequestByDate"/>
-            <output message="tns:managerConferenceListMessageResponseByDate"/>
-        </operation>
-        <operation name="managerConferenceRequestByDate">
-            <input message="tns:managerConferenceMessageRequestByDate"/>
-            <output message="tns:managerConferenceMessageResponseByDate"/>
-        </operation>	
-        	
+	   
     </portType>    
     <binding name="ManagerBinding" type="tns:ManagerPT">
       <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
-	      <operation name="managerConferenceListRequestByDate">
-	          <soap:operation soapAction=""/>
-		      <input>
-		              <soap:body use="literal"/>
-		      </input>
-		      <output>
-		              <soap:body use="literal"/>
-		      </output>
-	      </operation>
 	      
-	      <operation name="managerConferenceRequestByDate">
-	          <soap:operation soapAction=""/>
-		      <input>
-		              <soap:body use="literal"/>
-		      </input>
-		      <output>
-		              <soap:body use="literal"/>
-		      </output>
-	      </operation>
-	     
-	     		  
-    </binding>
+	</binding>
     <service name="ManagerService">
       <port name="ManagerPort" binding="tns:ManagerBinding">
           <soap:address location="http://localhost:8080/manager/services/manager"></soap:address>
